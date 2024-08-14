@@ -1,0 +1,10 @@
+.header, .footer {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 64px;
+    color: whitesmoke;
+    text-shadow: 4px 4px 8px black;
+    background-image: linear-gradient(to right, rgb(0,0,0), rgb(0, 136, 255), rgb(22, 188, 22), rgb(125, 113, 36), rgb(252, 92, 0));
+    overflow: hidden;
+}

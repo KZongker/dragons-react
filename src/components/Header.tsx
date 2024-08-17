@@ -4,7 +4,7 @@ export const Header = () => {
     return <>
     <div className="header">Dragon Practice Website</div>
     <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
+        <Container className="justify-content-evenly">
             <Nav>
                 <Nav.Link href="index.html">Homepage</Nav.Link>
                 <Nav.Link href="Humans.html">Human Characters</Nav.Link>

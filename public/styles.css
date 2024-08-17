@@ -180,3 +180,18 @@ h3 {font-size: 28px;}
     background-color: rgb(252, 92, 0);
 }
 /* End Humans */
+
+/* Start Dragons */
+.dragons img, .dragons2 img {
+    max-width: 350px;
+    max-height: 300px;
+}
+
+.stripe {
+    border-bottom: 4px solid black;
+}
+
+.stripeTwo {
+    border-bottom: 4px solid whitesmoke;
+}
+/* End Dragons */

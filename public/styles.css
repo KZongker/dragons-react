@@ -195,3 +195,16 @@ h3 {font-size: 28px;}
     border-bottom: 4px solid whitesmoke;
 }
 /* End Dragons */
+/* Start Survey */
+#formfont {
+    font-size: 20px;
+}
+
+.taller {
+    height: 46px;
+}
+
+.tallest {
+    height: 140px;
+}
+/* End Survey */

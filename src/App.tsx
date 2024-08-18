@@ -5,6 +5,7 @@ import './App.css';
 import { Dragons } from './Dragons';
 import { Welcome } from './Welcome';
 import { Humans } from './Humans';
+import { Survey } from './Survey';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/dragons" element={<Dragons />} />
       <Route path="/" element={<Welcome />} />
       <Route path="/humans" element={<Humans />} />
+      <Route path="/survey" element={ <Survey /> } />
     </Routes>
     </BrowserRouter>
   );

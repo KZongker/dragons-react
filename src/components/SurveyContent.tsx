@@ -1,18 +1,23 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { FloatingLabel, Form } from "react-bootstrap";
 
 export const SurveyContent = () => {
     const [name, setName] = useState("");
+    const [dragonName, setDragonName] = useState("");
+    const [species, setSpecies] = useState("");
+    const [comments, setComments] = useState("");
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         switch (e.currentTarget.name) {
             case "name": setName(e.currentTarget.value); break;
+            case "dragonName": setDragonName(e.currentTarget.value); break;
+            case "species": setSpecies(e.currentTarget.value); break;
+            case "comments": setComments(e.currentTarget.value); break;
         }
     };
     return <>
         <div className="info">
             <h1>Dragon Survey</h1>
             <p>To gather information on various dragon abilities and preferences!</p>
-            <p>{name}</p>
         </div>
 
         <div className="row justify-content-center">
@@ -39,13 +44,13 @@ export const SurveyContent = () => {
                                         <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15" />
                                     </svg>
                                 </span>
-                                <Form.Control type="text" id="petname" className="form-control taller" name="petname" placeholder="pet name/made up" required />
+                                <Form.Control type="text" id="petname" className="form-control taller" name="dragonName" placeholder="pet name/made up" required onChange={handleChange} value={dragonName} />
                             </div>
                         </Form.Group>
 
                         <Form.Group>
                             <Form.Label className="form-label">My Dragon Is A:</Form.Label>
-                            <Form.Select id="species" name="species" className="form-select mb-4 taller">
+                            <Form.Select id="species" name="species" className="form-select mb-4 taller" onChange={handleChange} value={species}>
                                 <option>Select One</option>
                                 <option>Deadly Nadder</option>
                                 <option>Hiddeous Zippleback</option>
@@ -57,59 +62,48 @@ export const SurveyContent = () => {
 
                         <span className="form-label">My Dragon Enjoys (check all that apply):</span>
                         <Form.Group className="form-check">
-                            <Form.Control type="checkbox" id="fish" className="form-check-input checks" name="fish" checked />
-                            <Form.Label className="form-check-label">Fish</Form.Label>
+                            <Form.Check type="checkbox" id="fish" className="checks" name="fish" label="Fish" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="checkbox" id="chicken" className="form-check-input checks" name="chicken" />
-                            <Form.Label className="form-check-label">Chicken</Form.Label>
+                            <Form.Check type="checkbox" id="chicken" className="checks" name="chicken" label="Chicken" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="checkbox" id="sheep" className="form-check-input checks" name="sheep" />
-                            <Form.Label className="form-check-label">Sheep</Form.Label>
+                            <Form.Check type="checkbox" id="sheep" className="checks" name="sheep" label="Sheep" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="checkbox" id="nip" className="form-check-input checks" name="nip" />
-                            <Form.Label className="form-check-label">Dragon Nip</Form.Label>
+                            <Form.Check type="checkbox" id="nip" className="checks" name="nip" label="Dragon Nip" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="checkbox" id="light" className="form-check-input checks" name="light" />
-                            <Form.Label className="form-check-label">Chasing Light</Form.Label>
+                            <Form.Check type="checkbox" id="light" className="checks" name="light" label="Chasing Light" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="checkbox" id="fetch" className="form-check-input checks" name="fetch" />
-                            <Form.Label className="form-check-label">Playing Fetch</Form.Label>
+                            <Form.Check type="checkbox" id="fetch" className="checks" name="fetch" label="Playing Fetch" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="checkbox" id="brush" className="form-check-input checks" name="brush" />
-                            <Form.Label className="form-check-label">Being Brushed</Form.Label>
+                            <Form.Check type="checkbox" id="brush" className="checks" name="brush" label="Being Brushed" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="checkbox" id="flight" className="form-check-input checks" name="flight" />
-                            <Form.Label className="form-check-label">Flight Practice</Form.Label>
+                            <Form.Check type="checkbox" id="flight" className="checks" name="flight" label="Flight Practice" />
                         </Form.Group><br />
 
                         <span className="form-label">My Dragon's Fire Type:</span>
                         <Form.Group className="form-check">
-                            <Form.Control type="radio" id="blasts" className="form-check-input checks" name="fire" checked />
-                            <Form.Label className="form-check-label">Blasts</Form.Label>
+                            <Form.Check type="radio" id="blasts" className="checks" name="fire" label="Blasts" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="radio" id="stream" className="form-check-input checks" name="fire" />
-                            <Form.Label className="form-check-label">Streaming</Form.Label>
+                            <Form.Check type="radio" id="stream" className="checks" name="fire" label="Streaming" />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Control type="radio" id="gas" className="form-check-input checks" name="fire" />
-                            <Form.Label className="form-check-label">Gas/Spark</Form.Label>
+                            <Form.Check type="radio" id="gas" className="checks" name="fire" label="Gas/Spark" />
                         </Form.Group>
                         <Form.Group className="form-check mb-4">
-                            <Form.Control type="radio" id="otherfire" className="form-check-input checks" name="fire" />
-                            <Form.Label className="form-check-label">Other</Form.Label>
+                            <Form.Check type="radio" id="otherfire" className="checks" name="fire" label="Other" />
                         </Form.Group>
 
                         <Form.Group className="form-floating mb-4">
-                            <textarea id="comments" name="comments" className="form-control tallest" placeholder="Thank you for your input!"></textarea>
-                            <Form.Label>Extra Comments:</Form.Label>
+                            <FloatingLabel label="Extra Comments:">
+                                <Form.Control as="textarea" id="comments" name="comments" className="form-control tallest" placeholder="Thank you for your input!" onChange={handleChange} value={comments} />
+                            </FloatingLabel>
                         </Form.Group>
 
                         <div className="mb-4">

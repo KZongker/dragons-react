@@ -15,9 +15,9 @@ export const Humans = () => {
         color: "black"
     }
     return <>
-    <SiteWrapper>
-        <p>Humans Page</p>
-        <HumanCard human={hiccup} index={0}></HumanCard>
-    </SiteWrapper>
+        <SiteWrapper>
+            <p>Humans Page</p>
+            <HumanCard human={hiccup} index={0}></HumanCard>
+        </SiteWrapper>
     </>
 };

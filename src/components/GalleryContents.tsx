@@ -1,3 +1,6 @@
+import { SetStateAction, useState } from "react";
+import { Carousel, Container } from "react-bootstrap";
+
 export const GalleryContents = () => {
     return <>
         <div className="info">
@@ -5,133 +8,133 @@ export const GalleryContents = () => {
             <p>Feel free to look at some lovely art by the fans of HTTYD!</p>
         </div>
 
-        <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel">
+        <Carousel id="imageCarousel" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/furylove.jpg" className="img-fluid" alt="Night Fury and Light Fury" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/BestFriends.jpg" className="img-fluid" alt="Hiccup and Toothless" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/toothfish.jpg" className="img-fluid" alt="Toothless with a fish" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/BestFriends2.png" className="img-fluid" alt="Valka and Cloudjumper" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/BestFriends3.jpg" className="img-fluid" alt="Hiccup and Toothless again" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Hicstrid.jpg" className="img-fluid" alt="Hiccup and Astrid" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/ColorVariants.jpg" className="img-fluid" alt="Colorful Dragon Variations" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/RuffnTuff.jpg" className="img-fluid" alt="Ruffnut, Tuffnut, Barf, and Belch" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/hobgobbler.png" className="img-fluid" alt="Gobber and a Hobgobbler" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Hiccup.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/astrid.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Thorstons.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/ruffnut.jpg" className="img-fluid" alt="Ruffnut" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/fishlegsig.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Snotloutig.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Toothless_Offical.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Stormfly_Offical.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Barf_and_Belch_Offical.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Meatlug_Offical.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Hookfang_Offical.jpg" className="img-fluid" alt="Hiccup" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
-                <div className="carousel-item">
-                    <div className="container text-center item">
+                <Carousel.Item>
+                    <Container className="text-center item">
                         <img src="Images/Fanart/Nightlights1.jpg" className="img-fluid" alt="Three Nightlights" />
-                    </div>
-                </div>
+                    </Container>
+                </Carousel.Item>
 
             </div>
 
@@ -143,6 +146,6 @@ export const GalleryContents = () => {
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
             </button>
-        </div>
+        </Carousel>
     </>
 };

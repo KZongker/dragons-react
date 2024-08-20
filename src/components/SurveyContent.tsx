@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FloatingLabel, Form } from "react-bootstrap";
+import { Alert, FloatingLabel, Form } from "react-bootstrap";
 
 export const SurveyContent = () => {
     const [name, setName] = useState("");
@@ -109,6 +109,11 @@ export const SurveyContent = () => {
                         <div className="mb-4">
                             <button type="submit" /* onclick="alert('Thanks for participating in the dragon survey!')" */ className="btn btn-outline-success btn-lg">Submit</button>
                             <button type="reset" className="btn btn-outline-danger btn-lg">Reset</button>
+                        </div>
+                        <div id="hiddenThanks">
+                            <Alert variant="success" dismissible>
+                                <p>Thanks for participating in the dragon survey!</p>
+                            </Alert>
                         </div>
                     </fieldset>
                 </form>

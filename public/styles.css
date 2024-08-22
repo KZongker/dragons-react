@@ -196,6 +196,86 @@ h3 {
     background-color: rgb(252, 92, 0);
 }
 
+#fightButton {
+    height: 60px;
+    width: 200px;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgb(25, 137, 185);
+    background-image: linear-gradient(to bottom right, rgb(95, 203, 245), rgb(25, 124, 185));
+    border: 2px solid rgb(0, 65, 95);
+}
+
+#addHumanBtn {
+    height: 60px;
+    width: 200px;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgb(25, 185, 52);
+    background-image: linear-gradient(to bottom right, rgb(108, 245, 95), rgb(25, 185, 33));
+    border: 2px solid rgb(25, 95, 0);
+}
+
+.red {
+    background-color: rgb(164, 2, 2);
+}
+
+.orange {
+    background-color: rgb(210, 116, 0);
+}
+
+.yellow {
+    background-color: rgb(228, 224, 0);
+}
+
+.chartreuse {
+    background-color: rgb(150, 240, 0);
+}
+
+.blue {
+    background-color: rgb(0, 92, 252);
+}
+
+.indigo {
+    background-color: rgb(108, 0, 170);
+}
+
+.purple {
+    background-color: rgb(150, 0, 170);
+}
+
+.magenta {
+    background-color: rgb(196, 0, 144);
+}
+
+.pink {
+    background-color: rgb(229, 55, 151);
+}
+
+.grey {
+    background-color: rgb(166, 166, 166);
+}
+
+.slate {
+    background-color: rgb(82, 82, 82);
+}
+
+#removeHumanBtn {
+    height: 60px;
+    width: 200px;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgb(185, 25, 25);
+    background-image: linear-gradient(to bottom right, rgb(245, 95, 95), rgb(185, 25, 25));
+    border: 2px solid rgb(95, 0, 0);
+}
+
 /* End Humans */
 
 /* Start Dragons */
@@ -215,7 +295,7 @@ h3 {
 
 /* End Dragons */
 /* Start Survey */
-#formfont {
+.formfont {
     font-size: 20px;
 }
 

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Alert, FloatingLabel, Form } from "react-bootstrap";
+import { Alert, Button, FloatingLabel, Form } from "react-bootstrap";
 
 export const SurveyContent = () => {
     const [name, setName] = useState("");
     const [dragonName, setDragonName] = useState("");
     const [species, setSpecies] = useState("");
     const [comments, setComments] = useState("");
+    const [submitted, setSubmitted] = useState(false);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         switch (e.currentTarget.name) {
             case "name": setName(e.currentTarget.value); break;
@@ -18,11 +19,12 @@ export const SurveyContent = () => {
         <div className="info">
             <h1>Dragon Survey</h1>
             <p>To gather information on various dragon abilities and preferences!</p>
+            <p>{name}</p>
         </div>
 
         <div className="row justify-content-center">
             <div className="col-lg-6">
-                <form id="#formfont">
+                <form className="formfont">
                     <fieldset>
                         <Form.Group>
                             <Form.Label className="form-label">Viking Name:</Form.Label>
@@ -107,14 +109,13 @@ export const SurveyContent = () => {
                         </Form.Group>
 
                         <div className="mb-4">
-                            <button type="submit" /* onclick="alert('Thanks for participating in the dragon survey!')" */ className="btn btn-outline-success btn-lg">Submit</button>
-                            <button type="reset" className="btn btn-outline-danger btn-lg">Reset</button>
+                            <Button variant="outline-success" size="lg" onClick={() => { setSubmitted(true) }}>Submit</Button>
+                            <Button variant="outline-danger" size="lg">Reset</Button>
                         </div>
-                        <div id="hiddenThanks">
-                            <Alert variant="success" dismissible>
-                                <p>Thanks for participating in the dragon survey!</p>
-                            </Alert>
-                        </div>
+                        {submitted && <Alert variant="success" dismissible onClose={() => { setSubmitted(false) }}>
+                            <p>You submitted the following: <br /> {name}</p>
+                        </Alert>
+                        }
                     </fieldset>
                 </form>
             </div>

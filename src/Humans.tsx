@@ -1,4 +1,5 @@
 import { HumanCard } from "./components/HumanCard";
+import { HumanContents } from "./components/HumanContents";
 import { SiteWrapper } from "./components/SiteWrapper";
 
 export const Humans = () => {
@@ -16,8 +17,8 @@ export const Humans = () => {
     }
     return <>
         <SiteWrapper>
-            <p>Humans Page</p>
             <HumanCard human={hiccup} index={0}></HumanCard>
+            <HumanContents />
         </SiteWrapper>
     </>
 };

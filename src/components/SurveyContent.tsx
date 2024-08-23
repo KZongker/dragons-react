@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, Button, FloatingLabel, Form } from "react-bootstrap";
+import { Alert, Button, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 
 export const SurveyContent = () => {
     const [name, setName] = useState("");
@@ -7,6 +7,42 @@ export const SurveyContent = () => {
     const [species, setSpecies] = useState("");
     const [comments, setComments] = useState("");
     const [submitted, setSubmitted] = useState(false);
+    const [fish, setFish] = useState(false);
+    const [chicken, setChicken] = useState(false);
+    const [sheep, setSheep] = useState(false);
+    const [nip, setNip] = useState(false);
+    const [light, setLight] = useState(false);
+    const [fetch, setFetch] = useState(false);
+    const [brush, setBrush] = useState(false);
+    const [flight, setFlight] = useState(false);
+    const [blast, setBlast] = useState(false);
+    const [stream, setStream] = useState(false);
+    const [gas, setGas] = useState(false);
+    const [other, setOther] = useState(false);
+    const blastActive = () => {
+        setBlast(true);
+        setStream(false);
+        setGas(false);
+        setOther(false);
+    }
+    const streamActive = () => {
+        setBlast(false);
+        setStream(true);
+        setGas(false);
+        setOther(false);
+    }
+    const gasActive = () => {
+        setBlast(false);
+        setStream(false);
+        setGas(true);
+        setOther(false);
+    }
+    const otherActive = () => {
+        setBlast(false);
+        setStream(false);
+        setGas(false);
+        setOther(true);
+    }
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         switch (e.currentTarget.name) {
             case "name": setName(e.currentTarget.value); break;
@@ -16,14 +52,13 @@ export const SurveyContent = () => {
         }
     };
     return <>
-        <div className="info">
+        <div className="info mb-4">
             <h1>Dragon Survey</h1>
             <p>To gather information on various dragon abilities and preferences!</p>
-            <p>{name}</p>
         </div>
 
-        <div className="row justify-content-center">
-            <div className="col-lg-6">
+        <Row className="justify-content-center">
+            <Col lg={6}>
                 <form className="formfont">
                     <fieldset>
                         <Form.Group>
@@ -64,42 +99,42 @@ export const SurveyContent = () => {
 
                         <span className="form-label">My Dragon Enjoys (check all that apply):</span>
                         <Form.Group className="form-check">
-                            <Form.Check type="checkbox" id="fish" className="checks" name="fish" label="Fish" />
+                            <Form.Check type="checkbox" id="fish" className="checks" name="fish" label="Fish" onClick={() => { fish ? setFish(false) : setFish(true) }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="checkbox" id="chicken" className="checks" name="chicken" label="Chicken" />
+                            <Form.Check type="checkbox" id="chicken" className="checks" name="chicken" label="Chicken" onClick={() => { chicken ? setChicken(false) : setChicken(true) }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="checkbox" id="sheep" className="checks" name="sheep" label="Sheep" />
+                            <Form.Check type="checkbox" id="sheep" className="checks" name="sheep" label="Sheep" onClick={() => { sheep ? setSheep(false) : setSheep(true) }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="checkbox" id="nip" className="checks" name="nip" label="Dragon Nip" />
+                            <Form.Check type="checkbox" id="nip" className="checks" name="nip" label="Dragon Nip" onClick={() => { nip ? setNip(false) : setNip(true) }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="checkbox" id="light" className="checks" name="light" label="Chasing Light" />
+                            <Form.Check type="checkbox" id="light" className="checks" name="light" label="Chasing Light" onClick={() => { light ? setLight(false) : setLight(true) }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="checkbox" id="fetch" className="checks" name="fetch" label="Playing Fetch" />
+                            <Form.Check type="checkbox" id="fetch" className="checks" name="fetch" label="Playing Fetch" onClick={() => { fetch ? setFetch(false) : setFetch(true) }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="checkbox" id="brush" className="checks" name="brush" label="Being Brushed" />
+                            <Form.Check type="checkbox" id="brush" className="checks" name="brush" label="Being Brushed" onClick={() => { brush ? setBrush(false) : setBrush(true) }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="checkbox" id="flight" className="checks" name="flight" label="Flight Practice" />
+                            <Form.Check type="checkbox" id="flight" className="checks" name="flight" label="Flight Practice" onClick={() => { flight ? setFlight(false) : setFlight(true) }} />
                         </Form.Group><br />
 
                         <span className="form-label">My Dragon's Fire Type:</span>
                         <Form.Group className="form-check">
-                            <Form.Check type="radio" id="blasts" className="checks" name="fire" label="Blasts" />
+                            <Form.Check type="radio" id="blasts" className="checks" name="fire" label="Blasts" onClick={() => { blastActive() }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="radio" id="stream" className="checks" name="fire" label="Streaming" />
+                            <Form.Check type="radio" id="stream" className="checks" name="fire" label="Streaming" onClick={() => { streamActive() }} />
                         </Form.Group>
                         <Form.Group className="form-check">
-                            <Form.Check type="radio" id="gas" className="checks" name="fire" label="Gas/Spark" />
+                            <Form.Check type="radio" id="gas" className="checks" name="fire" label="Gas/Spark" onClick={() => { gasActive() }} />
                         </Form.Group>
                         <Form.Group className="form-check mb-4">
-                            <Form.Check type="radio" id="otherfire" className="checks" name="fire" label="Other" />
+                            <Form.Check type="radio" id="otherfire" className="checks" name="fire" label="Other" onClick={() => { otherActive() }} />
                         </Form.Group>
 
                         <Form.Group className="form-floating mb-4">
@@ -113,12 +148,30 @@ export const SurveyContent = () => {
                             <Button variant="outline-danger" size="lg">Reset</Button>
                         </div>
                         {submitted && <Alert variant="success" dismissible onClose={() => { setSubmitted(false) }}>
-                            <p>You submitted the following: <br /> {name}</p>
+                            <p>You submitted the following: <br />
+                                Name: {name} <br />
+                                Dragon Name: {dragonName} <br />
+                                Dragon Species: {species} <br />
+                                Dragon Likes: <br />
+                                - Fish: {JSON.stringify(fish)} <br />
+                                - Chicken: {JSON.stringify(chicken)} <br />
+                                - Sheep: {JSON.stringify(sheep)} <br />
+                                - Dragon Nip: {JSON.stringify(nip)} <br />
+                                - Chasing Light: {JSON.stringify(light)} <br />
+                                - Fetch: {JSON.stringify(fetch)} <br />
+                                - Being Brushed: {JSON.stringify(brush)} <br />
+                                - Flight Practice: {JSON.stringify(flight)} <br />
+                                Dragon Fire: <br />
+                                - Blast Fire: {JSON.stringify(blast)} <br />
+                                - Streaming Fire: {JSON.stringify(stream)} <br />
+                                - Gas Fire: {JSON.stringify(gas)} <br />
+                                - Other Fire: {JSON.stringify(other)} <br />
+                                Results Recieved - Thank you for participating!</p>
                         </Alert>
                         }
                     </fieldset>
                 </form>
-            </div>
-        </div>
+            </Col>
+        </Row>
     </>
 };

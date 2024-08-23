@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { HumanCard } from "./components/HumanCard";
 import { HumanContents } from "./components/HumanContents";
 import { SiteWrapper } from "./components/SiteWrapper";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 export const Humans = () => {
     const [humans, setHumans] = useState([]);
@@ -26,6 +26,7 @@ export const Humans = () => {
 
     return <>
         <SiteWrapper>
+            <Row className="stripeTwo" />
             {populateCards()};
             <HumanContents />
         </SiteWrapper>

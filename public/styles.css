@@ -308,3 +308,28 @@ h3 {
 }
 
 /* End Survey */
+
+/* Start Gallery */
+#imageCarousel {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.carousel-item {
+    height: 75vh;
+    background: black;
+}
+
+.carousel-item .item {
+    position: relative;
+    height: 100%;
+}
+
+.carousel-item img {
+    max-height: 75vh;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+}
+
+/* End Gallery */

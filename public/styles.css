@@ -152,12 +152,16 @@ h3 {
     width: 62%;
 }
 
-#humanCard1head {
+#humanCard0head {
     text-shadow: 4px 4px 8px grey;
 }
 
-#humanCard2head {
+#humanCard1head {
     text-shadow: 4px 4px 8px rgb(0, 99, 185);
+}
+
+#humanCard2head {
+    text-shadow: 4px 4px 8px rgb(16, 143, 16);
 }
 
 #humanCard3head {
@@ -165,14 +169,10 @@ h3 {
 }
 
 #humanCard4head {
-    text-shadow: 4px 4px 8px rgb(16, 143, 16);
-}
-
-#humanCard5head {
     text-shadow: 4px 4px 8px rgb(100, 91, 28);
 }
 
-#humanCard6head {
+#humanCard5head {
     text-shadow: 4px 4px 8px rgb(194, 71, 0);
 }
 

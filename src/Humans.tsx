@@ -1,23 +1,32 @@
+import { useEffect, useState } from "react";
 import { HumanCard } from "./components/HumanCard";
 import { HumanContents } from "./components/HumanContents";
 import { SiteWrapper } from "./components/SiteWrapper";
+import { Container } from "react-bootstrap";
 
 export const Humans = () => {
-    const hiccup = {
-        name: "Hiccup Horrendous Haddock III",
-        dragon: "Toothless",
-        age: "15/20/21",
-        bravery: 4,
-        intelligence: 5,
-        speed: 5,
-        attack: 2,
-        defense: 3,
-        image: "Images/Fanart/Hiccup.jpg",
-        color: "black"
+    const [humans, setHumans] = useState([]);
+    const loadData = async () => {
+        const resp = await fetch("/humans.json");
+        const data = await resp.json();
+        console.log(setHumans(data));
     }
+
+    useEffect(() => {
+        loadData()
+    }, []);
+
+    const populateCards = () => {
+        const result: JSX.Element[] = [];
+        humans.forEach((h, index) => {
+            result.push(<HumanCard human={h} index={index}></HumanCard>)
+        });
+        return result;
+    };
+
     return <>
         <SiteWrapper>
-            <HumanCard human={hiccup} index={0}></HumanCard>
+            {populateCards()};
             <HumanContents />
         </SiteWrapper>
     </>

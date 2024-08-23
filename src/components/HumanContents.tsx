@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 
 export const HumanContents = () => {
     return <>
@@ -18,23 +18,24 @@ export const HumanContents = () => {
             <Col lg={8}>
 
                 <form className="text-center formfont">
-                    <Row>
-                        <label /* for="battlerOne" */ className="form-label">Please choose your fighters:</label><br />
-                        <label /* for="battlerTwo" */ className="form-label"></label>
-                        <Col sm={6}>
-                            <select id="battlerOne" className="form-select">
-                            </select>
-                        </Col>
-                        <Col sm={6}>
-                            <select id="battlerTwo" className="form-select">
-                            </select><br />
-                        </Col>
-                    </Row>
+                    <Form.Group>
+                        <Row>
+                            <Form.Label>Please choose your fighters:</Form.Label><br />
+                            <Col sm={6}>
+                                <Form.Select id="battlerOne">
+                                </Form.Select>
+                            </Col>
+                            <Col sm={6}>
+                                <Form.Select id="battlerTwo">
+                                </Form.Select><br />
+                            </Col>
+                        </Row>
+                    </Form.Group>
                     <button type="button" id="fightButton" /* onclick="doBattle();" */ className="mb-2">Fight!</button>
                     <p id="battleWinner">The Winner is: </p><br />
                 </form>
 
-                <Container id="alertBox" /* style="display: none" */>
+                <Container id="alertBox">
                     <div className="alert alert-primary alert-dismissible fade show text-center" role="alert">
                         Please ignore this alert box!
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
@@ -47,86 +48,106 @@ export const HumanContents = () => {
                 <form id="addVikings" className="text-center formfont">
                     <p>Want to add your own viking? Fill out the form below and test them in battle!</p>
 
-                    <Row className="my-4">
-                        <Col md={4}>
-                            <label /* for="fullName" */ className="form-label">Viking Name:</label>
-                        </Col>
-                        <Col md={8}>
-                            <input type="text" id="fullName" className="form-control" /* maxlength="50" */ required />
-                        </Col>
-                    </Row>
-                    <Row className="mb-4">
-                        <Col md={4}>
-                            <label /* for="dragonName"  maxlength="50" */ className="form-label">Dragon Name:</label>
-                        </Col>
-                        <Col md={8}>
-                            <input type="text" id="dragonName" className="form-control" required />
-                        </Col>
-                    </Row>
-                    <Row className="mb-4">
-                        <Col md={4}>
-                            <label /* for="vikingAge" */ className="form-label">Viking Age (first movie):</label>
-                        </Col>
-                        <Col md={4}>
-                            <input type="number" className="form-control" id="vikingAge" min="1" max="114" required />
-                        </Col>
-                    </Row>
-                    <Row className="mb-4">
-                        <Col md={4}>
-                            <label /* for="brave" */ className="form-label">Bravery:</label>
-                        </Col>
-                        <Col md={4}>
-                            <input type="number" id="brave" className="form-control" min="1" max="5" required />
-                        </Col>
-                    </Row>
-                    <Row className="mb-4">
-                        <Col md={4}>
-                            <label /* for="smart" */ className="form-label">Intelligence:</label>
-                        </Col>
-                        <Col md={4}>
-                            <input type="number" id="smart" className="form-control" min="1" max="5" required />
-                        </Col>
-                    </Row>
-                    <Row className="mb-4">
-                        <Col md={4}>
-                            <label /* for="fast" */ className="form-label">Speed:</label>
-                        </Col>
-                        <Col md={4}>
-                            <input type="number" id="fast" className="form-control" min="1" max="5" required />
-                        </Col>
-                    </Row>
-                    <Row className="mb-4">
-                        <Col md={4}>
-                            <label /* for="punch" */ className="form-label">Attack:</label>
-                        </Col>
-                        <Col md={4}>
-                            <input type="number" id="punch" className="form-control" min="1" max="5" required />
-                        </Col>
-                    </Row>
-                    <Row className="mb-4">
-                        <Col md={4}>
-                            <label /* for="block" */ className="form-label">Defense:</label>
-                        </Col>
-                        <Col md={4}>
-                            <input type="number" id="block" className="form-control" min="1" max="5" required />
-                        </Col>
-                    </Row>
+                    <Form.Group>
+                        <Row className="my-4">
+                            <Col md={4}>
+                                <Form.Label>Viking Name:</Form.Label>
+                            </Col>
+                            <Col md={8}>
+                                <Form.Control type="text" id="fullName" /* maxlength="50" */ required />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="mb-4">
+                            <Col md={4}>
+                                <Form.Label /* maxlength="50" */>Dragon Name:</Form.Label>
+                            </Col>
+                            <Col md={8}>
+                                <Form.Control type="text" id="dragonName" required />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="mb-4">
+                            <Col md={4}>
+                                <Form.Label>Viking Age (first movie):</Form.Label>
+                            </Col>
+                            <Col md={4}>
+                                <Form.Control type="number" id="vikingAge" min="1" max="114" required />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="mb-4">
+                            <Col md={4}>
+                                <Form.Label>Bravery:</Form.Label>
+                            </Col>
+                            <Col md={4}>
+                                <Form.Control type="number" id="brave" min="1" max="5" required />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="mb-4">
+                            <Col md={4}>
+                                <Form.Label>Intelligence:</Form.Label>
+                            </Col>
+                            <Col md={4}>
+                                <Form.Control type="number" id="smart" min="1" max="5" required />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="mb-4">
+                            <Col md={4}>
+                                <Form.Label>Speed:</Form.Label>
+                            </Col>
+                            <Col md={4}>
+                                <Form.Control type="number" id="fast" min="1" max="5" required />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="mb-4">
+                            <Col md={4}>
+                                <Form.Label>Attack:</Form.Label>
+                            </Col>
+                            <Col md={4}>
+                                <Form.Control type="number" id="punch" min="1" max="5" required />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="mb-4">
+                            <Col md={4}>
+                                <Form.Label>Defense:</Form.Label>
+                            </Col>
+                            <Col md={4}>
+                                <Form.Control type="number" id="block" min="1" max="5" required />
+                            </Col>
+                        </Row>
+                    </Form.Group>
 
-                    <label /* for="colorSelection" */ className="form-label mb-2">What color card would you like?</label>
-                    <Row className="justify-content-center mb-4">
-                        <Col md={6}>
-                            <select id="colorSelection" className="form-select">
-                            </select>
-                        </Col>
-                    </Row>
+                    <Form.Group>
+                        <Form.Label className="mb-2">What color card would you like?</Form.Label>
+                        <Row className="justify-content-center mb-4">
+                            <Col md={6}>
+                                <Form.Select id="colorSelection">
+                                </Form.Select>
+                            </Col>
+                        </Row>
+                    </Form.Group>
 
-                    <label /* for="imageSelection" */ className="form-label mb-2">Which image would you like?</label>
-                    <Row className="justify-content-center mb-4">
-                        <Col md={6}>
-                            <select id="imageSelection" className="form-select">
-                            </select>
-                        </Col>
-                    </Row>
+                    <Form.Group>
+                        <Form.Label className="mb-2">Which image would you like?</Form.Label>
+                        <Row className="justify-content-center mb-4">
+                            <Col md={6}>
+                                <Form.Select id="imageSelection">
+                                </Form.Select>
+                            </Col>
+                        </Row>
+                    </Form.Group>
 
                     <button type="button" id="addHumanBtn" className="mb-4" /* onclick="requireHuman();" */>Submit</button>
                 </form>
@@ -143,17 +164,19 @@ export const HumanContents = () => {
                 </Col>
 
                 <form className="text-center formfont">
-                    <label /* for="deleteBox" */ className="form-label mb-2">Would you like to delete an added viking?</label>
-                    <Row className="justify-content-center mb-4">
-                        <Col md={6}>
-                            <select id="deleteBox" className="form-select">
-                            </select>
-                        </Col>
-                    </Row>
+                    <Form.Group>
+                        <Form.Label className="mb-2">Would you like to delete an added viking?</Form.Label>
+                        <Row className="justify-content-center mb-4">
+                            <Col md={6}>
+                                <Form.Select id="deleteBox">
+                                </Form.Select>
+                            </Col>
+                        </Row>
+                    </Form.Group>
                     <button type="button" id="removeHumanBtn" className="mb-4" /* onclick="murder();" */>Delete</button>
                 </form>
             </Col>
 
-        </Row>
+        </Row >
     </>
 };

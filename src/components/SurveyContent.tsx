@@ -57,6 +57,13 @@ export const SurveyContent = () => {
             <p>To gather information on various dragon abilities and preferences!</p>
         </div>
 
+        <div id="music2">
+            <p>I'd like music while I fill this out:</p>
+            <audio controls>
+                <source src="Audio/Epic Emotional - AShamaluevMusic.mp3" />
+            </audio>
+        </div>
+
         <Row className="justify-content-center">
             <Col lg={6}>
                 <form className="formfont">

@@ -8,7 +8,7 @@ interface Props {
 export const SiteWrapper = (props: Props) => {
     return <>
         <Header />
-        <Container fluid className="content text-center">{props.children}</Container>
+        <Container fluid className="content">{props.children}</Container>
         <Footer />
     </>
 };

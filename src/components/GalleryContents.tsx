@@ -8,6 +8,13 @@ export const GalleryContents = () => {
             <p>Feel free to look at some lovely art by the fans of HTTYD!</p>
         </div>
 
+        <div id="music">
+            <p>I'd like music while I enjoy art:</p>
+            <audio controls>
+                <source src="Audio/Piano Lullaby No. 9 cutted.mp3" />
+            </audio>
+        </div>
+
         <Carousel id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-theme="dark">
             <Carousel.Item>
                 <Container className="text-center item">

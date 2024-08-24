@@ -8,7 +8,7 @@ export const GalleryContents = () => {
             <p>Feel free to look at some lovely art by the fans of HTTYD!</p>
         </div>
 
-        <Carousel id="imageCarousel" className="carousel slide" data-bs-ride="carousel">
+        <Carousel id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-theme="dark">
             <Carousel.Item>
                 <Container className="text-center item">
                     <img src="Images/Fanart/furylove.jpg" className="img-fluid" alt="Night Fury and Light Fury" />

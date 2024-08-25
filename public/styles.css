@@ -311,6 +311,11 @@ h3 {
 /* End Survey */
 
 /* Start Gallery */
+.content2 {
+    background-color: black;
+    width: 100%;
+}
+
 #imageCarousel {
     padding-top: 10px;
     padding-bottom: 30px;
@@ -318,7 +323,7 @@ h3 {
 
 .carousel-item {
     height: 75vh;
-    background: whitesmoke;
+    background: black;
 }
 
 .carousel-item .item {

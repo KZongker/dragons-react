@@ -3,19 +3,20 @@ import { Carousel, Container } from "react-bootstrap";
 
 export const GalleryContents = () => {
     return <>
-        <div className="info">
-            <h1>Fanart Gallery!!</h1>
-            <p>Feel free to look at some lovely art by the fans of HTTYD!</p>
-        </div>
-
         <Container fluid className="content2">
+            <div className="info">
+                <h1>Fanart Gallery!!</h1>
+                <p>Feel free to look at some lovely art by the fans of HTTYD!</p>
+            </div>
+
+
             <div id="music">
                 <audio controls>
                     <source src="Audio/Piano Lullaby No. 9 cutted.mp3" />
                 </audio>
             </div>
 
-            <Carousel id="imageCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-theme="dark">
+            <Carousel id="imageCarousel" className="carousel slide" data-bs-ride="carousel">
                 <Carousel.Item>
                     <Container className="text-center item">
                         <img src="Images/Fanart/furylove.jpg" className="img-fluid" alt="Night Fury and Light Fury" />

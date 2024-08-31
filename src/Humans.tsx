@@ -28,7 +28,7 @@ export const Humans = () => {
         <SiteWrapper>
             <Row className="stripeTwo" />
             <Container className="text-center">{populateCards()}</Container>
-            <HumanContents />
+            <HumanContents humans={humans} />
         </SiteWrapper>
     </>
 };

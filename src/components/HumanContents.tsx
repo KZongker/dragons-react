@@ -14,6 +14,7 @@ export const HumanContents = (props: Props) => {
     const [battlerTwo, setBattlerTwo] = useState(0);
     const [humanEdits, setHumanEdits] = useState(false);
     const [noDelete, setNoDelete] = useState(false);
+    const [fullName, setFullName] = useState("");
 
     const doBattle = () => {
         battlerOne === battlerTwo ? setFightError(true) : setFightError(false);
@@ -23,13 +24,18 @@ export const HumanContents = (props: Props) => {
         switch (e.currentTarget.name) {
             case "battlerOne": setBattlerOne(parseInt(e.currentTarget.value)); break;
             case "battlerTwo": setBattlerTwo(parseInt(e.currentTarget.value)); break;
+            case "fullName": setFullName(e.currentTarget.value); break;
         }
+    };
+
+    const addHuman = () => {
+        fullName == "" ? setHumanEdits(true) : setHumanEdits(false);
     };
 
     return <>
         <Row className="justify-content-center">
 
-            <Col lg={8} id="fightAlert"  /* style="display: none" */>
+            <Col lg={8} id="fightAlert">
                 {fightError &&
                     <Alert variant="warning" className="text-center" dismissible onClose={() => { setFightError(false) }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-exclamation-diamond" viewBox="0 0 16 16">
@@ -69,12 +75,11 @@ export const HumanContents = (props: Props) => {
 
                 <Container id="alertBox">
                     {humanEdits &&
-                        <Alert variant="primary" className="text-center">
+                        <Alert variant="primary" className="text-center" dismissible onClose={() => { setHumanEdits(false) }}>
                             Please ignore this alert box!
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
                             </svg>
-                            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </Alert>
                     }
                 </Container>
@@ -88,7 +93,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Viking Name:</Form.Label>
                             </Col>
                             <Col md={8}>
-                                <Form.Control type="text" id="fullName" /* maxlength="50" */ required />
+                                <Form.Control type="text" id="fullName" onChange={handleChange} value={fullName} required />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -183,7 +188,7 @@ export const HumanContents = (props: Props) => {
                         </Row>
                     </Form.Group>
 
-                    <button type="button" id="addHumanBtn" className="mb-4" /* onclick="requireHuman();" */>Submit</button>
+                    <button type="button" id="addHumanBtn" className="mb-4" onClick={addHuman}>Submit</button>
                 </form>
 
                 <Col lg={12} id="deleteAlert">

@@ -23,6 +23,8 @@ export const HumanContents = (props: Props) => {
     const [fast, setFast] = useState(0);
     const [punch, setPunch] = useState(0);
     const [block, setBlock] = useState(0);
+    const [colorSelection, setColorSelection] = useState("");
+    const [imageSelection, setImageSelection] = useState("");
 
     const doBattle = () => {
         battlerOne === battlerTwo ? setFightError(true) : setFightError(false);
@@ -45,11 +47,72 @@ export const HumanContents = (props: Props) => {
             case "fast": setFast(parseInt(e.currentTarget.value)); break;
             case "punch": setPunch(parseInt(e.currentTarget.value)); break;
             case "block": setBlock(parseInt(e.currentTarget.value)); break;
+            case "colorSelection": setColorSelection(e.currentTarget.value); break;
+            case "imageSelection": setImageSelection(e.currentTarget.value); break;
         }
     };
 
+    const colorArray = [
+        { name: "Pink" },
+        { name: "Magenta" },
+        { name: "Red" },
+        { name: "Scarlet" },
+        { name: "Orange" },
+        { name: "Yellow" },
+        { name: "Chartreuse" },
+        { name: "Green" },
+        { name: "Sky" },
+        { name: "Blue" },
+        { name: "Indigo" },
+        { name: "Purple" },
+        { name: "Brown" },
+        { name: "Black" },
+        { name: "Slate" },
+        { name: "Grey" }
+    ];
+
+    const imageArray = [
+        {
+            name: "Hiccup",
+            image: "Images/Fanart/Hiccup.jpg"
+        },
+        {
+            name: "Astrid",
+            image: "Images/Fanart/astrid.jpg"
+        },
+        {
+            name: "Thorstons",
+            image: "Images/Fanart/Thorstons.jpg"
+        },
+        {
+            name: "Ruffnut",
+            image: "Images/Fanart/ruffnut.jpg"
+        },
+        {
+            name: "Fishlegs",
+            image: "Images/Fanart/fishlegsig.jpg"
+        },
+        {
+            name: "Snotlout",
+            image: "Images/Fanart/Snotloutig.jpg"
+        }
+    ];
+
     const addHuman = () => {
-        fullName == "" ? setHumanEdits(true) : setHumanEdits(false);
+        const extraHumans = [];
+        fullName == "" ? setHumanEdits(true) : extraHumans.push({
+            name: fullName,
+            dragon: dragonName,
+            age: vikingAge + "/" + vikingAge + 5 + "/" + vikingAge + 6,
+            bravery: brave,
+            intelligence: smart,
+            speed: fast,
+            attack: punch,
+            defense: block,
+            image: imageSelection,
+            color: colorSelection
+        });
+        console.log(extraHumans);
     };
 
     return <>
@@ -192,7 +255,10 @@ export const HumanContents = (props: Props) => {
                         <Form.Label className="mb-2">What color card would you like?</Form.Label>
                         <Row className="justify-content-center mb-4">
                             <Col md={6}>
-                                <Form.Select id="colorSelection">
+                                <Form.Select id="colorSelection" onChange={handleChange} value={colorSelection}>
+                                    {colorArray.map((c: any, i: number) => (
+                                        <option value={c.name.toLowerCase()}>{c.name}</option>
+                                    ))}
                                 </Form.Select>
                             </Col>
                         </Row>
@@ -202,7 +268,10 @@ export const HumanContents = (props: Props) => {
                         <Form.Label className="mb-2">Which image would you like?</Form.Label>
                         <Row className="justify-content-center mb-4">
                             <Col md={6}>
-                                <Form.Select id="imageSelection">
+                                <Form.Select id="imageSelection" name="imageSelection" onChange={handleChange} value={imageSelection}>
+                                    {imageArray.map((p: any, i: number) => (
+                                        <option value={i}>{p.name}</option>
+                                    ))}
                                 </Form.Select>
                             </Col>
                         </Row>

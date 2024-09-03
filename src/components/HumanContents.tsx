@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Col, Container, Form, Row } from "react-bootstrap";
 
 
@@ -23,8 +23,10 @@ export const HumanContents = (props: Props) => {
     const [fast, setFast] = useState(0);
     const [punch, setPunch] = useState(0);
     const [block, setBlock] = useState(0);
-    const [colorSelection, setColorSelection] = useState("");
-    const [imageSelection, setImageSelection] = useState("");
+    const [colorSelection, setColorSelection] = useState("pink");
+    const [imageSelection, setImageSelection] = useState("Hiccup");
+
+    const [customHumans, setCustomHumans] = useState<any[]>([]);
 
     const doBattle = () => {
         battlerOne === battlerTwo ? setFightError(true) : setFightError(false);
@@ -99,11 +101,11 @@ export const HumanContents = (props: Props) => {
     ];
 
     const addHuman = () => {
-        const extraHumans = [];
+        const extraHumans = customHumans;
         fullName == "" ? setHumanEdits(true) : extraHumans.push({
             name: fullName,
             dragon: dragonName,
-            age: vikingAge + "/" + vikingAge + 5 + "/" + vikingAge + 6,
+            age: vikingAge + "/" + (vikingAge + 5) + "/" + (vikingAge + 6),
             bravery: brave,
             intelligence: smart,
             speed: fast,
@@ -112,8 +114,14 @@ export const HumanContents = (props: Props) => {
             image: imageSelection,
             color: colorSelection
         });
-        console.log(extraHumans);
+        setCustomHumans(extraHumans);
+        localStorage.setItem("customHumans", JSON.stringify(customHumans));
     };
+
+    useEffect(() => {
+        const json = localStorage.getItem("customHumans");
+        if (json !== null) setCustomHumans(JSON.parse(json));
+    }, []);
 
     return <>
         <Row className="justify-content-center">
@@ -196,7 +204,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Viking Age (first movie):</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="vikingAge" name="vikingAge" min="1" max="114" required onChange={handleChangeTwo} value={vikingAge} />
+                                <Form.Control type="number" id="vikingAge" name="vikingAge" min="1" max="114" required onChange={handleChangeTwo} value={vikingAge || ""} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -206,7 +214,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Bravery:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="brave" name="brave" min="1" max="5" required onChange={handleChangeTwo} value={brave} />
+                                <Form.Control type="number" id="brave" name="brave" min="1" max="5" required onChange={handleChangeTwo} value={brave || ""} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -216,7 +224,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Intelligence:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="smart" name="smart" min="1" max="5" required onChange={handleChangeTwo} value={smart} />
+                                <Form.Control type="number" id="smart" name="smart" min="1" max="5" required onChange={handleChangeTwo} value={smart || ""} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -226,7 +234,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Speed:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="fast" name="fast" min="1" max="5" required onChange={handleChangeTwo} value={fast} />
+                                <Form.Control type="number" id="fast" name="fast" min="1" max="5" required onChange={handleChangeTwo} value={fast || ""} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -236,7 +244,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Attack:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="punch" name="punch" min="1" max="5" required onChange={handleChangeTwo} value={punch} />
+                                <Form.Control type="number" id="punch" name="punch" min="1" max="5" required onChange={handleChangeTwo} value={punch || ""} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -246,7 +254,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Defense:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="block" name="block" min="1" max="5" required onChange={handleChangeTwo} value={block} />
+                                <Form.Control type="number" id="block" name="block" min="1" max="5" required onChange={handleChangeTwo} value={block || ""} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -255,7 +263,7 @@ export const HumanContents = (props: Props) => {
                         <Form.Label className="mb-2">What color card would you like?</Form.Label>
                         <Row className="justify-content-center mb-4">
                             <Col md={6}>
-                                <Form.Select id="colorSelection" onChange={handleChange} value={colorSelection}>
+                                <Form.Select id="colorSelection" name="colorSelection" onChange={handleChangeTwo} value={colorSelection}>
                                     {colorArray.map((c: any, i: number) => (
                                         <option value={c.name.toLowerCase()}>{c.name}</option>
                                     ))}
@@ -268,9 +276,9 @@ export const HumanContents = (props: Props) => {
                         <Form.Label className="mb-2">Which image would you like?</Form.Label>
                         <Row className="justify-content-center mb-4">
                             <Col md={6}>
-                                <Form.Select id="imageSelection" name="imageSelection" onChange={handleChange} value={imageSelection}>
+                                <Form.Select id="imageSelection" name="imageSelection" onChange={handleChangeTwo} value={imageSelection}>
                                     {imageArray.map((p: any, i: number) => (
-                                        <option value={i}>{p.name}</option>
+                                        <option value={p.name}>{p.name}</option>
                                     ))}
                                 </Form.Select>
                             </Col>
@@ -299,6 +307,9 @@ export const HumanContents = (props: Props) => {
                         <Row className="justify-content-center mb-4">
                             <Col md={6}>
                                 <Form.Select id="deleteBox">
+                                    {customHumans.map((d: any, i: number) => (
+                                        <option value={i}>{d.name}</option>
+                                    ))}
                                 </Form.Select>
                             </Col>
                         </Row>

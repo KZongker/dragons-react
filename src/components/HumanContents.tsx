@@ -14,7 +14,15 @@ export const HumanContents = (props: Props) => {
     const [battlerTwo, setBattlerTwo] = useState(0);
     const [humanEdits, setHumanEdits] = useState(false);
     const [noDelete, setNoDelete] = useState(false);
+
     const [fullName, setFullName] = useState("");
+    const [dragonName, setDragonName] = useState("");
+    const [vikingAge, setVikingAge] = useState(0);
+    const [brave, setBrave] = useState(0);
+    const [smart, setSmart] = useState(0);
+    const [fast, setFast] = useState(0);
+    const [punch, setPunch] = useState(0);
+    const [block, setBlock] = useState(0);
 
     const doBattle = () => {
         battlerOne === battlerTwo ? setFightError(true) : setFightError(false);
@@ -24,7 +32,19 @@ export const HumanContents = (props: Props) => {
         switch (e.currentTarget.name) {
             case "battlerOne": setBattlerOne(parseInt(e.currentTarget.value)); break;
             case "battlerTwo": setBattlerTwo(parseInt(e.currentTarget.value)); break;
+        }
+    };
+
+    const handleChangeTwo = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+        switch (e.currentTarget.name) {
             case "fullName": setFullName(e.currentTarget.value); break;
+            case "dragonName": setDragonName(e.currentTarget.value); break;
+            case "vikingAge": setVikingAge(parseInt(e.currentTarget.value)); break;
+            case "brave": setBrave(parseInt(e.currentTarget.value)); break;
+            case "smart": setSmart(parseInt(e.currentTarget.value)); break;
+            case "fast": setFast(parseInt(e.currentTarget.value)); break;
+            case "punch": setPunch(parseInt(e.currentTarget.value)); break;
+            case "block": setBlock(parseInt(e.currentTarget.value)); break;
         }
     };
 
@@ -93,7 +113,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Viking Name:</Form.Label>
                             </Col>
                             <Col md={8}>
-                                <Form.Control type="text" id="fullName" onChange={handleChange} value={fullName} required />
+                                <Form.Control type="text" id="fullName" name="fullName" required onChange={handleChangeTwo} value={fullName} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -103,7 +123,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label /* maxlength="50" */>Dragon Name:</Form.Label>
                             </Col>
                             <Col md={8}>
-                                <Form.Control type="text" id="dragonName" required />
+                                <Form.Control type="text" id="dragonName" required name="dragonName" onChange={handleChangeTwo} value={dragonName} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -113,7 +133,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Viking Age (first movie):</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="vikingAge" min="1" max="114" required />
+                                <Form.Control type="number" id="vikingAge" name="vikingAge" min="1" max="114" required onChange={handleChangeTwo} value={vikingAge} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -123,7 +143,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Bravery:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="brave" min="1" max="5" required />
+                                <Form.Control type="number" id="brave" name="brave" min="1" max="5" required onChange={handleChangeTwo} value={brave} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -133,7 +153,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Intelligence:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="smart" min="1" max="5" required />
+                                <Form.Control type="number" id="smart" name="smart" min="1" max="5" required onChange={handleChangeTwo} value={smart} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -143,7 +163,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Speed:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="fast" min="1" max="5" required />
+                                <Form.Control type="number" id="fast" name="fast" min="1" max="5" required onChange={handleChangeTwo} value={fast} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -153,7 +173,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Attack:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="punch" min="1" max="5" required />
+                                <Form.Control type="number" id="punch" name="punch" min="1" max="5" required onChange={handleChangeTwo} value={punch} />
                             </Col>
                         </Row>
                     </Form.Group>
@@ -163,7 +183,7 @@ export const HumanContents = (props: Props) => {
                                 <Form.Label>Defense:</Form.Label>
                             </Col>
                             <Col md={4}>
-                                <Form.Control type="number" id="block" min="1" max="5" required />
+                                <Form.Control type="number" id="block" name="block" min="1" max="5" required onChange={handleChangeTwo} value={block} />
                             </Col>
                         </Row>
                     </Form.Group>

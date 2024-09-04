@@ -123,6 +123,10 @@ export const HumanContents = (props: Props) => {
         if (json !== null) setCustomHumans(JSON.parse(json));
     }, []);
 
+    const murder = () => {
+        customHumans.length < 1 ? setNoDelete(true) : setNoDelete(false);
+    };
+
     return <>
         <Row className="justify-content-center">
 
@@ -314,7 +318,7 @@ export const HumanContents = (props: Props) => {
                             </Col>
                         </Row>
                     </Form.Group>
-                    <button type="button" id="removeHumanBtn" className="mb-4" /* onclick="murder();" */>Delete</button>
+                    <button type="button" id="removeHumanBtn" className="mb-4" onClick={murder} >Delete</button>
                 </form>
             </Col>
 

@@ -24,7 +24,7 @@ export const Humans = () => {
 
     const populateCards = () => {
         const result: JSX.Element[] = [];
-        humans.forEach((h, index) => {
+        combinedHumans.forEach((h, index) => {
             result.push(<HumanCard human={h} index={index}></HumanCard>)
         });
         return result;

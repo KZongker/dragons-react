@@ -14,6 +14,7 @@ export const HumanContents = (props: Props) => {
     const [battlerTwo, setBattlerTwo] = useState(0);
     const [humanEdits, setHumanEdits] = useState(false);
     const [noDelete, setNoDelete] = useState(false);
+    const [deleteIndex, setDeleteIndex] = useState(0);
 
     const [fullName, setFullName] = useState("");
     const [dragonName, setDragonName] = useState("");
@@ -27,6 +28,8 @@ export const HumanContents = (props: Props) => {
     const [imageSelection, setImageSelection] = useState("Hiccup");
 
     const [customHumans, setCustomHumans] = useState<any[]>([]);
+
+    const combinedHumans = [...props.humans].concat(customHumans);
 
     const doBattle = () => {
         battlerOne === battlerTwo ? setFightError(true) : setFightError(false);
@@ -101,7 +104,7 @@ export const HumanContents = (props: Props) => {
     ];
 
     const addHuman = () => {
-        const extraHumans = customHumans;
+        const extraHumans = [...customHumans];
         fullName == "" ? setHumanEdits(true) : extraHumans.push({
             name: fullName,
             dragon: dragonName,
@@ -123,9 +126,10 @@ export const HumanContents = (props: Props) => {
         if (json !== null) setCustomHumans(JSON.parse(json));
     }, []);
 
-    const murder = (index: any) => {
+    const murder = () => {
         const deletelist = [...customHumans];
-        customHumans.length < 1 ? setNoDelete(true) : deletelist.splice(index, 1);
+        customHumans.length < 1 ? setNoDelete(true) : deletelist.splice(deleteIndex, 1);
+        setDeleteIndex(0);
         setCustomHumans(deletelist);
         localStorage.removeItem("customHumans");
         localStorage.setItem("customHumans", JSON.stringify(deletelist));
@@ -154,14 +158,14 @@ export const HumanContents = (props: Props) => {
                             <Form.Label>Please choose your fighters:</Form.Label><br />
                             <Col sm={6}>
                                 <Form.Select name="battlerOne" id="battlerOne" onChange={handleChange} value={battlerOne}>
-                                    {props.humans.map((h: any, i: number) => (
+                                    {combinedHumans.map((h: any, i: number) => (
                                         <option value={i}>{h.name}</option>
                                     ))}
                                 </Form.Select>
                             </Col>
                             <Col sm={6}>
                                 <Form.Select name="battlerTwo" id="battlerTwo" onChange={handleChange} value={battlerTwo}>
-                                    {props.humans.map((h: any, i: number) => (
+                                    {combinedHumans.map((h: any, i: number) => (
                                         <option value={i}>{h.name}</option>
                                     ))}
                                 </Form.Select><br />
@@ -313,7 +317,7 @@ export const HumanContents = (props: Props) => {
                         <Form.Label className="mb-2">Would you like to delete an added viking?</Form.Label>
                         <Row className="justify-content-center mb-4">
                             <Col md={6}>
-                                <Form.Select id="deleteBox">
+                                <Form.Select id="deleteBox" value={deleteIndex} onChange={(e) => { setDeleteIndex(parseInt(e.currentTarget.value)) }}>
                                     {customHumans.map((d: any, i: number) => (
                                         <option value={i}>{d.name}</option>
                                     ))}

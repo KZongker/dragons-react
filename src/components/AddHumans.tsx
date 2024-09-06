@@ -18,7 +18,7 @@ export const AddHumans = (props: Props) => {
     const [punch, setPunch] = useState(0);
     const [block, setBlock] = useState(0);
     const [colorSelection, setColorSelection] = useState("pink");
-    const [imageSelection, setImageSelection] = useState("Hiccup");
+    const [imageSelection, setImageSelection] = useState("Images/Fanart/Hiccup.jpg");
 
 
 
@@ -218,7 +218,7 @@ export const AddHumans = (props: Props) => {
                             <Col md={6}>
                                 <Form.Select id="imageSelection" name="imageSelection" onChange={handleChangeTwo} value={imageSelection}>
                                     {imageArray.map((p: any, i: number) => (
-                                        <option value={p.name}>{p.name}</option>
+                                        <option value={p.image}>{p.name}</option>
                                     ))}
                                 </Form.Select>
                             </Col>

@@ -11,8 +11,15 @@ export const HumanBattle = (props: Props) => {
     const [battlerOne, setBattlerOne] = useState(0);
     const [battlerTwo, setBattlerTwo] = useState(0);
     const doBattle = () => {
-        battlerOne === battlerTwo ? setFightError(true) : setFightError(false);
+        battlerOne === battlerTwo ? setFightError(true) : attackHumans();
     };
+
+    const attackHumans = () => {
+        const damage = props.humans.bravery + props.humans.attack;
+        const resistance = props.humans.speed + props.humans.defense;
+        const total = damage > resistance ? damage - resistance : resistance - damage;
+        return total;
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         switch (e.currentTarget.name) {

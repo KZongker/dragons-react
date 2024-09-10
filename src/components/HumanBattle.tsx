@@ -11,14 +11,29 @@ export const HumanBattle = (props: Props) => {
     const [battlerOne, setBattlerOne] = useState(0);
     const [battlerTwo, setBattlerTwo] = useState(0);
     const doBattle = () => {
-        battlerOne === battlerTwo ? setFightError(true) : attackHumans();
+        battlerOne === battlerTwo ? setFightError(true) : combat();
     };
 
-    const attackHumans = () => {
-        const damage = props.humans.bravery + props.humans.attack;
-        const resistance = props.humans.speed + props.humans.defense;
+    const attackHumans = (human: any) => {
+        const damage = human.bravery + human.attack;
+        const resistance = human.speed + human.defense;
         const total = damage > resistance ? damage - resistance : resistance - damage;
         return total;
+    }
+
+    const combat = () => {
+        let fighterOne = attackHumans(battlerOne);
+        let fighterTwo = attackHumans(battlerTwo);
+        if (fighterOne > fighterTwo) {
+            console.log(fighterOne);
+        }
+        if (fighterOne < fighterTwo) {
+            console.log(fighterTwo);
+        }
+        if (fighterOne == fighterTwo) {
+            console.log("tie");
+        }
+        return;
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {

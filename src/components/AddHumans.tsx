@@ -20,6 +20,9 @@ export const AddHumans = (props: Props) => {
     const [colorSelection, setColorSelection] = useState("pink");
     const [imageSelection, setImageSelection] = useState("Images/Fanart/Hiccup.jpg");
 
+    const [variantType, setVariantType] = useState("primary");
+    const [alertText, setAlertText] = useState("Please ignore this alert box!");
+
 
 
     const handleChangeTwo = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -85,7 +88,7 @@ export const AddHumans = (props: Props) => {
 
     const addHuman = () => {
         const extraHumans = [...props.customHumans];
-        fullName == "" ? setHumanEdits(true) : extraHumans.push({
+        extraHumans.push({
             name: fullName,
             dragon: dragonName,
             age: vikingAge + "/" + (vikingAge + 5) + "/" + (vikingAge + 6),
@@ -101,16 +104,50 @@ export const AddHumans = (props: Props) => {
         localStorage.setItem("customHumans", JSON.stringify(props.customHumans));
     };
 
+    const checkRequirements = () => {
+        if (fullName == "") {
+            setAlertText("Please enter a viking name!");
+            setVariantType("danger");
+            setHumanEdits(true);
+        } else if (dragonName == "") {
+            setAlertText("Please enter a dragon name!");
+            setVariantType("danger");
+            setHumanEdits(true);
+        } else if (vikingAge <= 0 || vikingAge >= 115) {
+            setAlertText("Please enter a valid viking age! (1-114)");
+            setVariantType("warning");
+            setHumanEdits(true);
+        } else if (brave <= 0 || brave >= 6 || smart <= 0 || smart >= 6 || fast <= 0 || fast >= 6 || punch <= 0 || punch >= 6 || block <= 0 || block >= 6) {
+            setAlertText("Please enter a valid stat numbers! (1-5)");
+            setVariantType("warning");
+            setHumanEdits(true);
+        } else {
+            addHuman();
+            resetForm();
+            setAlertText("Success! Feel free to test your viking in battle above!");
+            setVariantType("success");
+            setHumanEdits(true);
+        }
+    }
+
+    const resetForm = () => {
+        setFullName("");
+        setDragonName("");
+        setVikingAge(0);
+        setBrave(0);
+        setSmart(0);
+        setFast(0);
+        setPunch(0);
+        setBlock(0);
+    }
+
     return <>
         <Row className="justify-content-center">
             <Col>
                 <Container id="alertBox">
                     {humanEdits &&
-                        <Alert variant="primary" className="text-center" dismissible onClose={() => { setHumanEdits(false) }}>
-                            Please ignore this alert box!
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
-                            </svg>
+                        <Alert variant={variantType} className="text-center" dismissible onClose={() => { setHumanEdits(false) }}>
+                            {alertText}
                         </Alert>
                     }
                 </Container>
@@ -225,7 +262,7 @@ export const AddHumans = (props: Props) => {
                         </Row>
                     </Form.Group>
 
-                    <button type="button" id="addHumanBtn" className="mb-4" onClick={addHuman}>Submit</button>
+                    <button type="button" id="addHumanBtn" className="mb-4" onClick={checkRequirements}>Submit</button>
                 </form>
             </Col>
         </Row>

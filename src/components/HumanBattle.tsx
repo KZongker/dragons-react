@@ -10,6 +10,8 @@ export const HumanBattle = (props: Props) => {
     const [fightError, setFightError] = useState(false);
     const [battlerOne, setBattlerOne] = useState(0);
     const [battlerTwo, setBattlerTwo] = useState(0);
+    const [battleWinner, setBattleWinner] = useState("");
+
     const doBattle = () => {
         battlerOne === battlerTwo ? setFightError(true) : combat();
     };
@@ -22,16 +24,19 @@ export const HumanBattle = (props: Props) => {
     }
 
     const combat = () => {
-        let fighterOne = attackHumans(battlerOne);
-        let fighterTwo = attackHumans(battlerTwo);
+        setFightError(false);
+        const humanOne = props.humans[battlerOne];
+        const humanTwo = props.humans[battlerTwo];
+        let fighterOne = attackHumans(humanOne);
+        let fighterTwo = attackHumans(humanTwo);
         if (fighterOne > fighterTwo) {
-            console.log(fighterOne);
+            setBattleWinner(humanOne.name);
         }
         if (fighterOne < fighterTwo) {
-            console.log(fighterTwo);
+            setBattleWinner(humanTwo.name);
         }
         if (fighterOne == fighterTwo) {
-            console.log("tie");
+            setBattleWinner("Nobody wins! It's a tie!");
         }
         return;
     }
@@ -80,7 +85,7 @@ export const HumanBattle = (props: Props) => {
                         </Row>
                     </Form.Group>
                     <button type="button" id="fightButton" onClick={doBattle} className="mb-2">Fight!</button>
-                    <p id="battleWinner">The Winner is: </p><br />
+                    <p id="battleWinner">The Winner is: {battleWinner}</p><br />
                 </form>
             </Col>
         </Row>

@@ -66,9 +66,10 @@ export const HumanAdmin = () => {
 
     return <>
         <SiteWrapper>
-            {JSON.stringify(human)}
 
-            <form className="text-center formfont">
+            <Row class="stripeTwo"></Row>
+
+            <form className="text-center formfont my-4">
 
                 <Form.Group>
                     <Row className="mb-4">

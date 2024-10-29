@@ -340,3 +340,20 @@ h3 {
 }
 
 /* End Gallery */
+
+/* Admin Start */
+#adminList {
+    list-style: none;
+    font-size: 20px;
+}
+
+#adminList a {
+    text-decoration: none;
+    color: rgb(0, 62, 22);
+}
+
+#adminList a:hover {
+    color: rgb(0, 154, 54);
+}
+
+/* Admin End */

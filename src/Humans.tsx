@@ -11,7 +11,7 @@ export const Humans = () => {
     const [humans, setHumans] = useState<any[]>([]);
     const combinedHumans = [...humans].concat(customHumans);
     const loadData = async () => {
-        const resp = await fetch("/humans.json");
+        const resp = await fetch("http://localhost:8080/humans");
         const data = await resp.json();
         console.log(setHumans(data));
         const json = localStorage.getItem("customHumans");

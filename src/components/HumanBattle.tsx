@@ -30,10 +30,10 @@ export const HumanBattle = (props: Props) => {
         let fighterOne = attackHumans(humanOne);
         let fighterTwo = attackHumans(humanTwo);
         if (fighterOne > fighterTwo) {
-            setBattleWinner(humanOne.name);
+            setBattleWinner(humanOne.first_name);
         }
         if (fighterOne < fighterTwo) {
-            setBattleWinner(humanTwo.name);
+            setBattleWinner(humanTwo.first_name);
         }
         if (fighterOne == fighterTwo) {
             setBattleWinner("Nobody wins! It's a tie!");
@@ -71,14 +71,14 @@ export const HumanBattle = (props: Props) => {
                             <Col sm={6}>
                                 <Form.Select name="battlerOne" id="battlerOne" onChange={handleChange} value={battlerOne}>
                                     {props.humans.map((h: any, i: number) => (
-                                        <option value={i}>{h.name}</option>
+                                        <option value={i}>{h.first_name}</option>
                                     ))}
                                 </Form.Select>
                             </Col>
                             <Col sm={6}>
                                 <Form.Select name="battlerTwo" id="battlerTwo" onChange={handleChange} value={battlerTwo}>
                                     {props.humans.map((h: any, i: number) => (
-                                        <option value={i}>{h.name}</option>
+                                        <option value={i}>{h.first_name}</option>
                                     ))}
                                 </Form.Select><br />
                             </Col>

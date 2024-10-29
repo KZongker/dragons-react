@@ -1,6 +1,8 @@
 interface Props {
     human: {
-        name: string,
+        first_name: string,
+        middle_name: string,
+        last_name: string,
         dragon: string,
         age: string,
         bravery: number,
@@ -20,11 +22,11 @@ export const HumanCard = (props: Props) => {
         if (stars == 3) result = <>&#x2605; &#x2605; &#x2605; &#x2606; &#x2606;</>;
         if (stars == 4) result = <>&#x2605; &#x2605; &#x2605; &#x2605; &#x2606;</>;
         if (stars == 5) result = <>&#x2605; &#x2605; &#x2605; &#x2605; &#x2605;</>;
-    
+
         return result;
     }
 
-    const getStats= () => {
+    const getStats = () => {
         return <table className="starstats">
             <tr><td>Bravery: </td><td> {beStars(props.human.bravery)} </td></tr>
             <tr><td>Intelligence: </td><td> {beStars(props.human.intelligence)} </td></tr>
@@ -35,16 +37,16 @@ export const HumanCard = (props: Props) => {
     }
 
     return <>
-    <div className={"humanCard " + props.human.color} id={"humanCard" + props.index}>
-      <div className="humanCardhead" id={"humanCard" + props.index + "head"}>
-          <h3>{props.human.name}</h3>
-      </div>
-      <div className="cardcont">
-          <img src={props.human.image} />
-          <p><span className="bold">Dragon: </span> {props.human.dragon}</p>
-          <p><span className="bold">Age: </span> {props.human.age}</p><br />
-          {getStats()}
-      </div>
-    </div>
+        <div className={"humanCard " + props.human.color} id={"humanCard" + props.index}>
+            <div className="humanCardhead" id={"humanCard" + props.index + "head"}>
+                <h3>{props.human.first_name} {props.human.middle_name} {props.human.last_name}</h3>
+            </div>
+            <div className="cardcont">
+                <img src={props.human.image} />
+                <p><span className="bold">Dragon: </span> {props.human.dragon}</p>
+                <p><span className="bold">Age: </span> {props.human.age}</p><br />
+                {getStats()}
+            </div>
+        </div>
     </>
 };

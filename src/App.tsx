@@ -7,7 +7,8 @@ import { Welcome } from './Welcome';
 import { Humans } from './Humans';
 import { Survey } from './Survey';
 import { Gallery } from './Gallery';
-import { HumansAdmin } from './HumansAdmin';
+import { HumanAdmin } from './admin/Human';
+import { HumansAdmin } from './admin/Humans';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/dragons" element={<Dragons />} />
         <Route path="/" element={<Welcome />} />
         <Route path="/humans" element={<Humans />} />
-        <Route path="/humans/admin" element={<HumansAdmin />} />
+        <Route path="/admin/humans/:id" element={<HumanAdmin />} />
+        <Route path="/admin/humans" element={<HumansAdmin />} />
         <Route path="/survey" element={<Survey />} />
         <Route path="/gallery" element={<Gallery />} />
       </Routes>

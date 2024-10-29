@@ -142,6 +142,7 @@ export const AddHumans = (props: Props) => {
     }
 
     return <>
+        <Row className="stripeTwo"></Row>
         <Row className="justify-content-center">
             <Col>
                 <Container id="alertBox">

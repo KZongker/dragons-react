@@ -8,9 +8,11 @@ export const HumanAdmin = () => {
 
     const [human, setHuman] = useState<any>({});
     const loadData = async () => {
-        const resp = await fetch("http://localhost:8080/humans/" + params.id);
-        const data = await resp.json();
-        console.log(setHuman(data));
+        if (params.id && params.id !== "0") {
+            const resp = await fetch("http://localhost:8080/humans/" + params.id);
+            const data = await resp.json();
+            console.log(setHuman(data));
+        }
     }
 
     useEffect(() => {

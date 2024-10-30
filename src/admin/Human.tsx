@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { HumansAdminContent } from "../components/HumansAdminContent";
-import { SiteWrapper } from "../components/SiteWrapper"
 import { useParams } from "react-router-dom";
-import { Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { AdminWrapper } from "../components/AdminWrapper";
 
 export const HumanAdmin = () => {
     const params = useParams();
@@ -64,8 +63,35 @@ export const HumanAdmin = () => {
         }
     ];
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+        const h = { ...human };
+        switch (e.currentTarget.name) {
+            case "firstName": h.firstName = e.currentTarget.value; break;
+            case "middleName": h.middleName = e.currentTarget.value; break;
+            case "lastName": h.lastName = e.currentTarget.value; break;
+            case "dragonName": h.dragon = e.currentTarget.value; break;
+            case "age": h.age = e.currentTarget.value; break;
+            case "bravery": h.bravery = e.currentTarget.value; break;
+            case "intelligence": h.intelligence = e.currentTarget.value; break;
+            case "speed": h.speed = e.currentTarget.value; break;
+            case "attack": h.attack = e.currentTarget.value; break;
+            case "defense": h.defense = e.currentTarget.value; break;
+            case "colorSelection": h.color = e.currentTarget.value; break;
+            case "imageSelection": h.image = e.currentTarget.value; break;
+        }
+        setHuman(h);
+    };
+
+    const handleSave = async () => {
+        await fetch("http://localhost:8080/humans/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(human)
+        });
+    };
+
     return <>
-        <SiteWrapper>
+        <AdminWrapper>
 
             <Row class="stripeTwo"></Row>
 
@@ -77,7 +103,7 @@ export const HumanAdmin = () => {
                             <Form.Label>First Name:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="text" id="firstName" required name="firstName" value={human.first_name} />
+                            <Form.Control type="text" id="firstName" required name="firstName" onChange={handleChange} value={human.firstName} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -88,7 +114,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Middle Name:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="text" id="middleName" required name="middleName" value={human.middle_name} />
+                            <Form.Control type="text" id="middleName" required name="middleName" onChange={handleChange} value={human.middleName} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -99,7 +125,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Last Name:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="text" id="lastName" required name="lastName" value={human.last_name} />
+                            <Form.Control type="text" id="lastName" required name="lastName" onChange={handleChange} value={human.lastName} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -110,7 +136,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Dragon Name:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="text" id="dragonName" required name="dragonName" value={human.dragon} />
+                            <Form.Control type="text" id="dragonName" required name="dragonName" onChange={handleChange} value={human.dragon} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -121,7 +147,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Age:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="text" id="age" required name="age" value={human.age} />
+                            <Form.Control type="text" id="age" required name="age" onChange={handleChange} value={human.age} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -132,7 +158,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Bravery:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="number" id="bravery" required name="bravery" min="1" max="5" value={human.bravery} />
+                            <Form.Control type="number" id="bravery" required name="bravery" min="1" max="5" onChange={handleChange} value={human.bravery} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -143,7 +169,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Intelligence:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="number" id="intelligence" required name="intelligence" min="1" max="5" value={human.intelligence} />
+                            <Form.Control type="number" id="intelligence" required name="intelligence" min="1" max="5" onChange={handleChange} value={human.intelligence} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -154,7 +180,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Speed:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="number" id="speed" required name="speed" min="1" max="5" value={human.speed} />
+                            <Form.Control type="number" id="speed" required name="speed" min="1" max="5" onChange={handleChange} value={human.speed} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -165,7 +191,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Attack:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="number" id="attack" required name="attack" min="1" max="5" value={human.attack} />
+                            <Form.Control type="number" id="attack" required name="attack" min="1" max="5" onChange={handleChange} value={human.attack} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -176,7 +202,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Defense:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Control type="number" id="defense" required name="defense" min="1" max="5" value={human.defense} />
+                            <Form.Control type="number" id="defense" required name="defense" min="1" max="5" onChange={handleChange} value={human.defense} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -187,7 +213,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Color:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Select id="colorSelection" name="colorSelection" value={human.color}>
+                            <Form.Select id="colorSelection" name="colorSelection" onChange={handleChange} value={human.color}>
                                 {colorArray.map((c: any, i: number) => (
                                     <option value={c.name.toLowerCase()}>{c.name}</option>
                                 ))}
@@ -202,7 +228,7 @@ export const HumanAdmin = () => {
                             <Form.Label>Image:</Form.Label>
                         </Col>
                         <Col md={8}>
-                            <Form.Select id="imageSelection" name="imageSelection" value={human.image}>
+                            <Form.Select id="imageSelection" name="imageSelection" onChange={handleChange} value={human.image}>
                                 {imageArray.map((p: any, i: number) => (
                                     <option value={p.image}>{p.name}</option>
                                 ))}
@@ -210,10 +236,14 @@ export const HumanAdmin = () => {
                         </Col>
                     </Row>
                 </Form.Group>
+
+                <Button type="button" className="mb-4" onClick={handleSave}>Submit</Button>
+                <Button type="button" className="mb-4" onClick={handleSave}>Cancel</Button>
+                <Button type="button" className="mb-4" onClick={handleSave}>Delete</Button>
             </form>
 
             <Row class="stripeTwo"></Row>
 
-        </SiteWrapper>
+        </AdminWrapper>
     </>
 };

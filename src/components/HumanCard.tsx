@@ -1,8 +1,8 @@
 interface Props {
     human: {
-        first_name: string,
-        middle_name: string,
-        last_name: string,
+        firstName: string,
+        middleName: string,
+        lastName: string,
         dragon: string,
         age: string,
         bravery: number,
@@ -39,7 +39,7 @@ export const HumanCard = (props: Props) => {
     return <>
         <div className={"humanCard " + props.human.color} id={"humanCard" + props.index}>
             <div className="humanCardhead" id={"humanCard" + props.index + "head"}>
-                <h3>{props.human.first_name} {props.human.middle_name} {props.human.last_name}</h3>
+                <h3>{props.human.firstName} {props.human.middleName} {props.human.lastName}</h3>
             </div>
             <div className="cardcont">
                 <img src={props.human.image} />

@@ -9,12 +9,16 @@ import { Survey } from './Survey';
 import { Gallery } from './Gallery';
 import { HumanAdmin } from './admin/Human';
 import { HumansAdmin } from './admin/Humans';
+import { DragonsAdmin } from './admin/Dragons';
+import { DragonAdmin } from './admin/Dragon';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/dragons" element={<Dragons />} />
+        <Route path="/admin/dragons" element={<DragonsAdmin />} />
+        <Route path="/admin/dragons/:id" element={<DragonAdmin />} />
         <Route path="/" element={<Welcome />} />
         <Route path="/humans" element={<Humans />} />
         <Route path="/admin/humans/:id" element={<HumanAdmin />} />

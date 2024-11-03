@@ -342,17 +342,17 @@ h3 {
 /* End Gallery */
 
 /* Admin Start */
-#adminList {
+.adminList {
     list-style: none;
     font-size: 20px;
 }
 
-#adminList a {
+.adminList a {
     text-decoration: none;
     color: rgb(0, 62, 22);
 }
 
-#adminList a:hover {
+.adminList a:hover {
     color: rgb(0, 154, 54);
 }
 

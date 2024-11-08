@@ -92,6 +92,14 @@ export const HumanAdmin = () => {
         });
     };
 
+    const handleDelete = async () => {
+        await fetch("http://localhost:8080/humans/:id", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(human)
+        });
+    };
+
     return <>
         <AdminWrapper>
 
@@ -241,7 +249,7 @@ export const HumanAdmin = () => {
 
                 <Button type="button" className="mb-4" onClick={handleSave}>Submit</Button>
                 <Button type="button" className="mb-4" onClick={handleSave}>Cancel</Button>
-                <Button type="button" className="mb-4" onClick={handleSave}>Delete</Button>
+                <Button type="button" className="mb-4" onClick={handleDelete}>Delete</Button>
             </form>
 
             <Row class="stripeTwo"></Row>

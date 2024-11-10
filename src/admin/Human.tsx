@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { AdminWrapper } from "../components/AdminWrapper";
 
@@ -248,7 +248,7 @@ export const HumanAdmin = () => {
                 </Form.Group>
 
                 <Button type="button" className="mb-4" onClick={handleSave}>Submit</Button>
-                <Button type="button" className="mb-4" onClick={handleSave}>Cancel</Button>
+                <Link to="http://localhost:3000/admin/humans" className="btn btn-primary mb-4">Cancel</Link>
                 <Button type="button" className="mb-4" onClick={handleDelete}>Delete</Button>
             </form>
 
